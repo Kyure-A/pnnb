@@ -1,6 +1,6 @@
 import { describe } from "node:test";
 
-export async function getClassroomAnnouncements(all_courses: GoogleAppsScript.Classroom.Schema.Course[]): any | undefined {
+export function getClassroomAnnouncements(all_courses: GoogleAppsScript.Classroom.Schema.Course[]): any | undefined {
     let last_updated_date_str: string = PropertiesService.getDocumentProperties().getProperty("last_updated_date")!;
     const last_updated_date: Date = new Date(last_updated_date_str!);
 
@@ -36,8 +36,9 @@ export async function getClassroomAnnouncements(all_courses: GoogleAppsScript.Cl
     PropertiesService.getDocumentProperties().setProperty("last_updated_date", last_updated_date_str);
 }
 
-export async function getClassroomAttachments(all_courses: GoogleAppsScript.Classroom.Schema.Course[], last_updated_date_str: string): any | undefined {
+export function getClassroomAttachments(all_courses: GoogleAppsScript.Classroom.Schema.Course[]): any | undefined {
     let result: string[][] = [];
+    let last_updated_date_str: string = PropertiesService.getDocumentProperties().getProperty("last_updated_date")!;
     const last_updated_date: Date = new Date(last_updated_date_str!);
 
     // course について loop
@@ -55,7 +56,6 @@ export async function getClassroomAttachments(all_courses: GoogleAppsScript.Clas
             if (coursework == undefined) return;
             const updated_date_str: string = coursework.updateTime!;
             const updated_date: Date = new Date(updated_date_str!);
-            const last_updated_date: Date = new Date(last_updated_date_str!);
 
             if (last_updated_date >= updated_date) return;
 
@@ -108,4 +108,9 @@ export function postToDiscord(json: Embeds) {
     }
 
     UrlFetchApp.fetch(discord_url!, param);
+}
+
+export function main() {
+    const all_courses: GoogleAppsScript.Classroom.Schema.Course[] | undefined = Classroom.Courses?.list().courses!;
+    getClassroomAttachments(all_courses);
 }
