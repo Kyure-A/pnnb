@@ -1,0 +1,39 @@
+// Yahoo
+
+[
+    {"type":"element",
+     "tagName":"div",
+     "attributes":[{"key":"id","value":"mdServiceStatus"}],
+     "children":[
+	 {"type":"element",
+	  "tagName":"dl",
+	  "attributes":[],
+	  "children":[
+	      {"type":"element",
+	       "tagName":"dt",
+	       "attributes":[],
+	       "children":[
+		   {"type":"element",
+		    "tagName":"span",
+		    "attributes":[
+			{"key":"class","value":"icnNormalLarge"}],
+		    "children":[{"type":"text","content":"[○]"}]},
+		   {"type":"text","content":"平常運転"}]},
+	      {"type":"element",
+	       "tagName":"dd",
+	       "attributes":
+	       [{"key":"class","value":"normal"}],
+	       "children":[
+		   {"type":"element",
+		    "tagName":"p",
+		    "attributes":[],
+		    "children":
+		    [{"type":"text","content":"現在､事故･遅延に関する情報はありません。"}]
+		   }
+	       ]
+	      }
+	  ]
+	 }
+     ]
+    }
+]
