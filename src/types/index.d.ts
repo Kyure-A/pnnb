@@ -6,9 +6,10 @@ type Embed = {
 
 type Embeds = {
     title: string
+    url
     fields: Embed[]
 }
 
 type DiscordMessage = {
-    embeds: Embeds[]
+    embeds: Embeds
 }

@@ -68,15 +68,16 @@ export async function getClassroomAttachments(all_courses: GoogleAppsScript.Clas
                 const material_title: string = material.driveFile?.driveFile?.title!;
                 const alt_url: string = material.driveFile?.driveFile?.alternateLink!;
 
-                const json = {
+                const json: Embed = {
                     name: material_title,
-                    value: alt_url
+                    value: alt_url,
+                    inline: false
                 };
 
                 files_url.push(json);
             })
 
-            const json = {
+            const json: Embeds = {
                 title: title,
                 url: url,
                 fields: files_url
@@ -90,12 +91,12 @@ export async function getClassroomAttachments(all_courses: GoogleAppsScript.Clas
 }
 
 
-export function postToDiscord(json: any) {
+export function postToDiscord(json: Embeds) {
     // PropertiesService.getDocumentProperties().setProperty("discord", "insert_your_webhook_url");
 
     const discord_url: string | null = PropertiesService.getDocumentProperties().getProperty("discord");
 
-    const message = {
+    const message: DiscordMessage = {
         "embeds": json
     };
 
