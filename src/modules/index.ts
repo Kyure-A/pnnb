@@ -97,7 +97,7 @@ export function postToDiscord(json: Embeds) {
     const discord_url: string | null = PropertiesService.getDocumentProperties().getProperty("discord");
 
     const message: DiscordMessage = {
-        "embeds": json
+        "embed": json
     };
 
     const param: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions =
